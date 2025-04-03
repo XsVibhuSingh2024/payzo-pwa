@@ -1,0 +1,8 @@
+import React, { useState } from "react"; import { Button } from "@/components/ui/button"; import { Card, CardContent } from "@/components/ui/card"; import { Input } from "@/components/ui/input";
+
+export default function PayzoApp() { const [amount, setAmount] = useState(""); const [status, setStatus] = useState("");
+
+const handlePayment = () => { if (amount && parseFloat(amount) > 0) { setStatus("Payment Successful! ✅"); } else { setStatus("Enter a valid amount."); } };
+
+return ( <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-5"> <Card className="w-full max-w-md shadow-lg bg-white p-6 rounded-xl"> <CardContent> <h1 className="text-2xl font-bold text-center mb-4">Pay.zo - Fast & Secure Payments</h1> <Input type="number" placeholder="Enter amount" value={amount} onChange={(e) => setAmount(e.target.value)} className="mb-4" /> <Button className="w-full bg-blue-500 text-white py-2 rounded-lg" onClick={handlePayment}> Pay Now </Button> {status && <p className="mt-4 text-center font-semibold text-green-600">{status}</p>} </CardContent> </Card> </div> ); }
+
